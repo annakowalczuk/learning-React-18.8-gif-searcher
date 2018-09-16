@@ -17,7 +17,8 @@ Search = React.createClass({
     },
 
     handleSubmit: function(event) {
-        this.props.onSearch(searchingText);
+        this.props.onSubmit(this.state.searchingText);
+        event.preventDefault();
     },
 
     handleKeyUp: function(event) {
