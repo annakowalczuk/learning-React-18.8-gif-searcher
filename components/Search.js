@@ -1,42 +1,52 @@
 Search = React.createClass({
     getInitialState() {
-        return {
-          searchingText: ''
-        };
+        return {searchingText: ''};
     },
-    
-    handleChange: function(event) {
+
+    handleChange: function (event) {
         var searchingText = event.target.value;
-        this.setState({
-            searchingText: searchingText
-        });
+        this.setState({searchingText: searchingText});
 
         if (searchingText.length > 2) {
-            this.props.onSearch(searchingText);
-          }
-    },
-
-    handleKeyUp: function(event) {
-        //Czy wciśnięty klawisz to enter?
-        if (event.keyCode === 13) { 
-          this.props.onSearch(this.state.searchingText);
+            this
+                .props
+                .onSearch(searchingText);
         }
     },
 
-    render: function() {
+    handleSubmit: function (event) {
+        this
+            .props
+            .onSearch(this.state.searchingText);
+    },
+
+    handleKeyUp: function (event) {
+        //Czy wciśnięty klawisz to enter?
+        if (event.keyCode === 13) {
+            this
+                .props
+                .onSearch(this.state.searchingText);
+        }
+    },
+
+    render: function () {
         var styles = {
             fontSize: '1.5em',
             width: '90%',
             maxWidth: '350px'
         };
 
-        return <input
-                type="text"
-                onChange={this.handleChange}
-                onKeyUp={this.handleKeyUp}
-                placeholder="Tutaj wpisz wyszukiwaną frazę"
-                style={styles}
-                value={this.state.searchTerm}
-                />
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <input
+                    type="text"
+                    onChange={this.handleChange}
+                    onKeyUp={this.handleKeyUp}
+                    placeholder="Tutaj wpisz wyszukiwaną frazę"
+                    style={styles}
+                    value={this.state.searchTerm}/>
+                <input type="submit" value="Submit"/>
+            </form>
+        );
     }
 });
