@@ -10,22 +10,11 @@ Search = React.createClass({
         this.setState({
             searchingText: searchingText
         });
-
-        // if (searchingText.length > 2) {
-        //     this.props.onSearch(searchingText);
-        //   }
     },
 
     handleSubmit: function(event) {
         this.props.onSubmit(this.state.searchingText);
         event.preventDefault();
-    },
-
-    handleKeyUp: function(event) {
-        //Czy wciśnięty klawisz to enter?
-        if (event.keyCode === 13) { 
-          this.props.onSearch(this.state.searchingText);
-        }
     },
 
     render: function() {
@@ -45,7 +34,6 @@ Search = React.createClass({
                     style={styles}
                     value={this.state.searchTerm}
                 />
-                <input type="submit" value="Submit" />
                 </form>
         );
     }
