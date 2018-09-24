@@ -15,12 +15,12 @@ App = React.createClass({
           loading: true  // Zasygnalizuj, że zaczął się proces ładowania.
         });
         this.getGif(searchingText)
-            .then(respons => this.setState({  
+            .then(response => this.setState({  
                 loading: false,  // przestań sygnalizować ładowanie
-                gif: respons,  // ustaw nowego gifa z wyniku pobierania,
+                gif: response,  // ustaw nowego gifa z wyniku pobierania,
                 searchingText: searchingText  // ustaw nowy stan dla wyszukiwanego tekstu.
               }))
-            .catch(error => console.log(xhr.status));
+            .catch(error => console.log(error));
       },
     
     getGif: function(searchingText) {
